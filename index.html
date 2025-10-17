@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>แดชบอร์ดประกันรถยนต์</title>
+  <style>
+    body {
+      font-family: "Prompt", sans-serif;
+      background: #f3f5f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #1565c0;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+    }
+    .card h3 {
+      color: #1976d2;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 22px;
+      font-weight: bold;
+    }
+    canvas {
+      width: 100%;
+      height: 250px;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      color: #888;
+      background: #fff;
+      border-top: 1px solid #ccc;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>📊 แดชบอร์ดประกันรถยนต์</header>
+
+  <div class="container">
+    <div class="card">
+      <h3>จำนวนลูกค้าทั้งหมด</h3>
+      <p id="clients">1,254</p>
+    </div>
+    <div class="card">
+      <h3>กรมธรรม์ที่กำลังใช้งาน</h3>
+      <p>1,020</p>
+    </div>
+    <div class="card">
+      <h3>กรมธรรม์หมดอายุ</h3>
+      <p style="color:#e53935;">234</p>
+    </div>
+    <div class="card">
+      <h3>รายได้เดือนนี้</h3>
+      <p style="color:#43a047;">฿452,000</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin: 20px;">
+    <h3>ยอดขายรายเดือน</h3>
+    <canvas id="chart1"></canvas>
+  </div>
+
+  <div class="card" style="margin: 20px;">
+    <h3>ประเภทประกันที่ขายมากที่สุด</h3>
+    <canvas id="chart2"></canvas>
+  </div>
+
+  <footer>© 2025 ระบบแดชบอร์ดประกันรถยนต์</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // กราฟแท่งยอดขายรายเดือน
+    const ctx1 = document.getElementById('chart1');
+    new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.'],
+        datasets: [{
+          label: 'ยอดขาย (บาท)',
+          data: [300000, 350000, 400000, 380000, 420000, 452000],
+          backgroundColor: '#1e88e5'
+        }]
+      }
+    });
+
+    // กราฟวงกลมประเภทประกัน
+    const ctx2 = document.getElementById('chart2');
+    new Chart(ctx2, {
+      type: 'pie',
+      data: {
+        labels: ['ประกันชั้น 1', 'ประกันชั้น 2+', 'ประกันชั้น 3', 'อื่น ๆ'],
+        datasets: [{
+          data: [55, 25, 15, 5],
+          backgroundColor: ['#1565c0', '#42a5f5', '#90caf9', '#cfd8dc']
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
